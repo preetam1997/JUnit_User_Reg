@@ -44,4 +44,16 @@ public class UserReg {
 		}
 		return "in-valid";
 	}
+	
+	public String PassWord(String s) {
+		
+		String regex = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^.,:;'!@#$%^&*_+=|]*[.,:;'!@#$%^&*_+=|][^.,:;'!@#$%^&*_+=|]*$)[A-Za-z0-9.,:;'!@#$%^&*_+=|]{8,16}$";
+	    
+	    boolean result = Pattern.matches(regex,s);
+	    
+		if(result) {
+			return "valid";
+		}
+		return "in-valid";
+	}
 }

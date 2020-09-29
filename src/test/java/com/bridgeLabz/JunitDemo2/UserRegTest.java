@@ -81,5 +81,21 @@ public class UserRegTest {
 		assertEquals("in-valid", Ph_no);
 		
 	}
+	
+	@Test
+	public void GIVEN_PASSPWRD_IS_ACCEPTABLE() {
+		UserReg user = new UserReg();
+		String PassWord = user.PassWord("Za1S.ORD");
+		assertEquals("valid", PassWord);
+		
+	}
+	
+	@Test
+	public void GIVEN_PASSPWRD_IS_NOT_ACCEPTABLE() {
+		UserReg user = new UserReg();
+		String PassWord = user.PassWord("ZaoneS.ORD");
+		assertEquals("in-valid", PassWord);
+		
+	}
 
 }
