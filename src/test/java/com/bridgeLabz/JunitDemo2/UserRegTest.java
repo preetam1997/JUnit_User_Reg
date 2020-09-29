@@ -65,5 +65,21 @@ public class UserRegTest {
 		assertEquals("in-valid", Email);
 		
 	}
+	
+	@Test
+	public void GIVEN_PHONE_NUMBER_FORMAT_IS_CORRECT() {
+		UserReg user = new UserReg();
+		String Ph_no = user.PhoneNumber("91 8240755200");
+		assertEquals("valid", Ph_no);
+		
+	}
+	
+	@Test
+	public void GIVEN_PHONE_NUMBER_FORMAT_IS_NOT_CORRECT() {
+		UserReg user = new UserReg();
+		String Ph_no = user.PhoneNumber("91. 8240755200");
+		assertEquals("in-valid", Ph_no);
+		
+	}
 
 }

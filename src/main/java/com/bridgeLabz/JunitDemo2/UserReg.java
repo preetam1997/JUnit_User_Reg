@@ -35,5 +35,13 @@ public class UserReg {
 			return "in-valid";
 	   }
 
-	
+	public String PhoneNumber(String s) {
+		String regex = "^([0-9]{2})(\\s)([0-9]{10})$";
+	     
+	    boolean result = Pattern.matches(regex,s);
+		if(result) {
+			return "valid";
+		}
+		return "in-valid";
+	}
 }
