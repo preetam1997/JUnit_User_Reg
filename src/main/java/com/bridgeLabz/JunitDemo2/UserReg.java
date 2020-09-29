@@ -23,6 +23,17 @@ public class UserReg {
 		}
 		return "in-valid";
 	}
+	
+	public String EmailValidator(String s) {
+		
+		 String regex = "^(?!.*\\.{2})([a-zA-Z0-9]+)([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]?)([a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)@([a-z A-Z]{2,20}).([a-z A-Z]{2,4})(.[a-z]{2,8})?$";
+	     
+	      boolean result = Pattern.matches(regex,s);
+	      if(result) {
+				return "valid";
+			}
+			return "in-valid";
+	   }
 
 	
 }

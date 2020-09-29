@@ -35,7 +35,7 @@ public class UserRegTest {
 	public void GIVEN_LAST_NAME_STARTS_CAP_AND_CONTAINS_3_OR_MORE_LETTERS() {
 		
 		UserReg user = new UserReg();
-		String Name = user.FirstName("Mukhopadhyay");
+		String Name = user.LastName("Mukhopadhyay");
 		assertEquals("valid", Name);
 		
 	} 
@@ -44,11 +44,26 @@ public class UserRegTest {
 	public void GIVEN_LAST_NAME_DOES_NOT_STARTS_CAP_AND_CONTAINS_3_OR_MORE_LETTERS() {
 		
 		UserReg user = new UserReg();
-		String LName = user.FirstName("pk");
+		String LName = user.LastName("pk");
 		assertEquals("in-valid", LName);
 		
 	} 
 	
 	
+	@Test
+	public void GIVEN_EMAIL_FORMAT_IS_CORRECT() {
+		UserReg user = new UserReg();
+		String Email = user.EmailValidator("ompreetam@gmail.com");
+		assertEquals("valid", Email);
+		
+	}
+	
+	@Test
+	public void GIVEN_EMAIL_FORMAT_IS_NOT_CORRECT() {
+		UserReg user = new UserReg();
+		String Email = user.EmailValidator("ompreetam.@gmail.com");
+		assertEquals("in-valid", Email);
+		
+	}
 
 }
