@@ -97,5 +97,32 @@ public class UserRegTest {
 		assertEquals("in-valid", PassWord);
 		
 	}
+	
+	@Test
+	public void GIVEN_EMAIL_FORMAT_IS_CORRECT_1() {
+		UserReg user = new UserReg();
+		
+		assertEquals("valid", user.EmailValidator("abc@yahoo.com"));
+		assertEquals("valid", user.EmailValidator("abc-100@yahoo.com"));
+		assertEquals("valid", user.EmailValidator("abc.100@gmail.com"));
+		assertEquals("valid", user.EmailValidator("abc111@abc.com"));
+		assertEquals("valid", user.EmailValidator("abc-100@abc.net"));
+		assertEquals("valid", user.EmailValidator("abc.100@abc.com.au"));
+		assertEquals("valid", user.EmailValidator("abc@gmail.com.com"));
+		assertEquals("valid", user.EmailValidator("abc+100@gmail.com"));
+		assertEquals("in-valid", user.EmailValidator("abc"));//in-valid
+		assertEquals("in-valid", user.EmailValidator("abc@.com.my"));
+		assertEquals("in-valid", user.EmailValidator("abc123@gmail.a"));
+		assertEquals("in-valid", user.EmailValidator(".abc@abc.com"));
+		assertEquals("in-valid", user.EmailValidator("abc()*@gmail.com.com"));
+		assertEquals("in-valid", user.EmailValidator("abc@%*.com.com"));
+		assertEquals("in-valid", user.EmailValidator("abc..2002@gmail.com"));
+		assertEquals("in-valid", user.EmailValidator("abc.@gmail.com"));
+		assertEquals("in-valid", user.EmailValidator("abc@abc@gmail.com"));
+		assertEquals("in-valid", user.EmailValidator("abc@gmail.com.1a"));
+		assertEquals("in-valid", user.EmailValidator("abc@gmail.com.aa.au"));
+		assertEquals("in-valid", user.EmailValidator("abc@1.com"));
+		
+	}
 
 }
