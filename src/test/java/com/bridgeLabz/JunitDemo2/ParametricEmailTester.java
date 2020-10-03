@@ -57,7 +57,12 @@ public class ParametricEmailTester {
 	
 	@Test
 	public void testEmail(){
-		assertEquals(result, user.EmailValidatorForParameterisedTesting(email));
+		try {
+			assertEquals(result, user.uriEmailParameterised.User(email));
+		} catch (UserRegExecption e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

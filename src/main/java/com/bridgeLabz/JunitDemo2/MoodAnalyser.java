@@ -1,13 +1,20 @@
 package com.bridgeLabz.JunitDemo2;
 
+
+
+
+@FunctionalInterface
+interface MoodA {
+	String Mood(String t) throws MoodAnalysisException ;
+}
 public class MoodAnalyser {
 
-	public String Mood(String string) throws MoodAnalysisException {
+	MoodA moodA = (mood)-> {
 		try {
-			if(string.length()==0) {
+			if(mood.length()==0) {
 				throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY, "Please Enter Valid String");
 			}
-			if(string.contains("sad")) {
+			if(mood.contains("sad")) {
 				return "SAD";
 			}
 			return "HAPPY";
@@ -15,6 +22,6 @@ public class MoodAnalyser {
 			throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL, "Please Enter Valid String");
 		}
 		
-	}
+	};
 
 }

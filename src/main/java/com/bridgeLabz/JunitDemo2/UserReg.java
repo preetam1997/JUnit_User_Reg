@@ -2,9 +2,14 @@ package com.bridgeLabz.JunitDemo2;
 
 import java.util.regex.Pattern;
 
+@FunctionalInterface
+interface UserRegInterface {
+	String User(String t) throws UserRegExecption ;
+}
+
 public class UserReg {
 
-	public String FirstName(String s) throws UserRegExecption {
+	UserRegInterface uriFirstName = (s)->  {
 		String regex = "^([A-Z]{1})([a-z]{2,})$";
 	     
 	   try {
@@ -22,9 +27,9 @@ public class UserReg {
 		throw new UserRegExecption(UserRegExecption.ExceptionType.ENTERED_NULL, "Please Enter valid String which is not null");
 	}
 	
-	}
+	};
 	
-	public String LastName(String s) throws UserRegExecption {
+	UserRegInterface uriLastName = (s)->  {
 		String regex = "^([A-Z]{1})([a-z]{2,})$";
 		  try {
 			   if(s.length()==0) {
@@ -41,9 +46,9 @@ public class UserReg {
 			throw new UserRegExecption(UserRegExecption.ExceptionType.ENTERED_NULL, "Please Enter valid String which is not null");
 		}
 		
-	}
+	};
 	
-	public String EmailValidator(String s) throws UserRegExecption {
+	UserRegInterface uriEmail = (s)->  {
 		
 		 String regex = "^(?!.*\\.{2})([a-zA-Z0-9]+)([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]?)([a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)@([a-z A-Z]{2,20}).([a-z A-Z]{2,4})(.[a-z]{2,8})?$";
 	     
@@ -62,9 +67,9 @@ public class UserReg {
 			throw new UserRegExecption(UserRegExecption.ExceptionType.ENTERED_NULL, "Please Enter valid String which is not null");
 		}
 		
-	   }
+	   };
 	
-	public String EmailValidatorForParameterisedTesting(String s) {
+	   UserRegInterface uriEmailParameterised = (s)->  {
 		
 		 String regex = "^(?!.*\\.{2})([a-zA-Z0-9]+)([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]?)([a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)@([a-z A-Z]{2,20}).([a-z A-Z]{2,4})(.[a-z]{2,8})?$";
 	     
@@ -73,11 +78,11 @@ public class UserReg {
 		 		return "valid";
 		 		}
 			return "in-valid";
-		}
+		};
 	
 	
 
-	public String PhoneNumber(String s) throws UserRegExecption {
+		UserRegInterface uriPhoneNumber = (s)->  {
 		String regex = "^([0-9]{2})(\\s)([0-9]{10})$";
 	     
 		  try {
@@ -95,9 +100,9 @@ public class UserReg {
 			throw new UserRegExecption(UserRegExecption.ExceptionType.ENTERED_NULL, "Please Enter valid String which is not null");
 		}
 		
-	}
+	};
 	
-	public String PassWord(String s) throws UserRegExecption {
+	UserRegInterface uriPassWord = (s)->  {
 		
 		String regex = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^.,:;'!@#$%^&*_+=|]*[.,:;'!@#$%^&*_+=|][^.,:;'!@#$%^&*_+=|]*$)[A-Za-z0-9.,:;'!@#$%^&*_+=|]{8,16}$";
 	    
@@ -116,5 +121,5 @@ public class UserReg {
 			throw new UserRegExecption(UserRegExecption.ExceptionType.ENTERED_NULL, "Please Enter valid String which is not null");
 		}
 		
-	}
+	};
 }
