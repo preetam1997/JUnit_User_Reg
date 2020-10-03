@@ -13,7 +13,30 @@ public class UserRegTest {
 	}
 	
 	@Test
-	public void GIVEN_FIRST_NAME_STARTS_CAP_AND_CONTAINS_3_OR_MORE_LETTERS() {
+	public void GIVEN_FIRST_NAME_DOESNT_STARTS_CAP_AND_CONTAINS_3_OR_MORE_LETTERS() {
+		
+		UserReg user = new UserReg();
+		String FName1;
+		try {
+			FName1 = user.FirstName("pr");
+			
+		} catch (UserRegExecption e) {
+			// TODO Auto-generated catch block
+			
+			
+				
+				
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
+			
+				
+			//e.printStackTrace();
+		}
+		
+		
+	} 
+	@Test
+	public void GIVEN_FIRST_NAME_IS_EMPTY() {
 		
 		UserReg user = new UserReg();
 		String FName1;
@@ -23,14 +46,29 @@ public class UserRegTest {
 		} catch (UserRegExecption e) {
 			// TODO Auto-generated catch block
 			
-			if(e.getMessage().matches("Please Enter valid String which is not null") )
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
-				
-			if(e.getMessage().matches("Please Enter valid String") )
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String which is not Empty"))
+				
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_EMPTY, e.type);
+			//e.printStackTrace();
+		}
+		
+		
+	} 
+	
+	@Test
+	public void GIVEN_FIRST_NAME_IS_NULL() {
+		
+		UserReg user = new UserReg();
+		String FName1;
+		try {
+			FName1 = user.FirstName(null);
+			
+		} catch (UserRegExecption e) {
+			// TODO Auto-generated catch block
+			
+			
+				
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
 			//e.printStackTrace();
 		}
 		
@@ -41,40 +79,83 @@ public class UserRegTest {
 
 
 	@Test
-	public void GIVEN_LAST_NAME_STARTS_CAP_AND_CONTAINS_3_OR_MORE_LETTERS() {
+	public void GIVEN_LAST_NAME_DOESNT_STARTS_CAP_AND_CONTAINS_3_OR_MORE_LETTERS() {
+	
+		UserReg user = new UserReg();
+		String Name;
+		try {
+			Name = user.LastName("mu");
+		} catch (UserRegExecption e) {
+			
+				
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
+			
+				
+			//e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void GIVEN_LAST_NAME_IS_EMPTY() {
+	
+		UserReg user = new UserReg();
+		String Name;
+		try {
+			Name = user.LastName("");
+		} catch (UserRegExecption e) {
+			
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_EMPTY, e.type);
+			//e.printStackTrace();
+		}
+		
+	}
+	
+	
+	@Test
+	public void GIVEN_LAST_NAME_IS_NULL() {
 	
 		UserReg user = new UserReg();
 		String Name;
 		try {
 			Name = user.LastName(null);
 		} catch (UserRegExecption e) {
-			if(e.getMessage().matches("Please Enter valid String which is not null") )
+			
+			
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
-			
-			if(e.getMessage().matches("Please Enter Valid String") ) 
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
-			
-			if(e.getMessage().matches("Please Enter Valid String which is not Empty"))
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_EMPTY, e.type);
 			//e.printStackTrace();
 		}
 		
 	}
 	
 	@Test
-	public void GIVEN_EMAIL_FORMAT_IS_CORRECT() {
+	public void GIVEN_EMAIL_FORMAT_IS_NOT_CORRECT() {
+		UserReg user = new UserReg();
+		String Email;
+		try {
+			Email = user.EmailValidator("abc");
+		} catch (UserRegExecption e) {
+			
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
+			
+			//e.printStackTrace();
+		}
+		
+		
+	}
+	
+	@Test
+	public void GIVEN_EMAIL_FORMAT_IS_EMPTY() {
 		UserReg user = new UserReg();
 		String Email;
 		try {
 			Email = user.EmailValidator("");
 		} catch (UserRegExecption e) {
-			if(e.getMessage().matches("Please Enter valid String which is not null") )
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String") ) 
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String which is not Empty"))
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_EMPTY, e.type);
 			//e.printStackTrace();
 		}
@@ -83,20 +164,63 @@ public class UserRegTest {
 	}
 	
 	@Test
-	public void GIVEN_PHONE_NUMBER_FORMAT_IS_CORRECT() {
+	public void GIVEN_EMAIL_FORMAT_IS_NULL() {
+		UserReg user = new UserReg();
+		String Email;
+		try {
+			Email = user.EmailValidator(null);
+		} catch (UserRegExecption e) {
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
+			
+			//e.printStackTrace();
+		}
+		
+		
+	}
+	
+	@Test
+	public void GIVEN_PHONE_NUMBER_FORMAT_IS_NOT_CORRECT() {
 		UserReg user = new UserReg();
 		String Ph_no;
 		try {
-			Ph_no = user.PhoneNumber("91 8240755200");
+			Ph_no = user.PhoneNumber("  abc");
 		} catch (UserRegExecption e) {
-			if(e.getMessage().matches("Please Enter valid String which is not null") )
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String") ) 
+			
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String which is not Empty"))
+			//e.printStackTrace();
+		}
+		
+		
+	}
+	
+	@Test
+	public void GIVEN_PHONE_NUMBER_FORMAT_IS_EMPTY() {
+		UserReg user = new UserReg();
+		String Ph_no;
+		try {
+			Ph_no = user.PhoneNumber("");
+		} catch (UserRegExecption e) {
+			
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_EMPTY, e.type);
+			//e.printStackTrace();
+		}
+		
+		
+	}
+	
+	@Test
+	public void GIVEN_PHONE_NUMBER_FORMAT_IS_NULL() {
+		UserReg user = new UserReg();
+		String Ph_no;
+		try {
+			Ph_no = user.PhoneNumber(null);
+		} catch (UserRegExecption e) {
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
+			
 			//e.printStackTrace();
 		}
 		
@@ -105,20 +229,44 @@ public class UserRegTest {
 	
 	
 	@Test
-	public void GIVEN_PASSPWRD_IS_ACCEPTABLE() {
+	public void GIVEN_PASSWORD_IS_NOT_ACCEPTABLE() {
 		UserReg user = new UserReg();
 		String PassWord;
 		try {
-			PassWord = user.PassWord("Za1S.ORD");
+			PassWord = user.PassWord("ZaS..,ORD");
 		} catch (UserRegExecption e) {
-			if(e.getMessage().matches("Please Enter valid String which is not null") )
-				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String") ) 
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_INVALID, e.type);
 			
-			if(e.getMessage().matches("Please Enter Valid String which is not Empty"))
+			//e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void GIVEN_PASSWORD_IS_EMPTY() {
+		UserReg user = new UserReg();
+		String PassWord;
+		try {
+			PassWord = user.PassWord("");
+		} catch (UserRegExecption e) {
+			
 				assertEquals(UserRegExecption.ExceptionType.ENTERED_EMPTY, e.type);
+			//e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void GIVEN_PASSWORD_IS_NULL() {
+		UserReg user = new UserReg();
+		String PassWord;
+		try {
+			PassWord = user.PassWord(null);
+		} catch (UserRegExecption e) {
+			
+				assertEquals(UserRegExecption.ExceptionType.ENTERED_NULL, e.type);
+			
 			//e.printStackTrace();
 		}
 		
